@@ -18,6 +18,7 @@ import quickgames.activity.extra.annotation.FieldType;
 /**
  * Created by quickgames on 29.04.18 19:43.
  */
+@Deprecated
 public class AppCompatActivityExtra extends AppCompatActivity {
 
     //region PRIVATE_STATIC_FINAL_VALUES

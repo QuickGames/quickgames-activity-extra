@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+@Deprecated
 public class Util {
 
     private Util() {

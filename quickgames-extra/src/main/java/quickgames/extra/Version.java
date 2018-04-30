@@ -1,4 +1,4 @@
-package quickgames.activity.extra;
+package quickgames.extra;
 
 import android.support.annotation.NonNull;
 
@@ -10,29 +10,29 @@ public final class Version {
     }
 
     static {
-        _version = "0.0.0";
-        _build = 1;
-        _date = "29.04.2018";
+        Version.s_version = "0.0.2";
+        Version.s_build = 2;
+        Version.s_date = "30.04.2018";
     }
 
     //endregion
 
     //region BUILD
 
-    private static int _build;
+    private static int s_build;
 
     public static int getBuild() {
-        return _build;
+        return s_build;
     }
 
     //endregion
 
     //region VERSION
 
-    private static String _version;
+    private static String s_version;
 
     public static String getVersion() {
-        return _version;
+        return s_version;
     }
 
     @NonNull
@@ -44,10 +44,10 @@ public final class Version {
 
     //region DATE
 
-    private static String _date;
+    private static String s_date;
 
     public static String getDate() {
-        return _date;
+        return s_date;
     }
 
     //endregion
@@ -61,6 +61,7 @@ public final class Version {
 
     @NonNull
     public static String get() {
+
         return get("Version");
     }
 

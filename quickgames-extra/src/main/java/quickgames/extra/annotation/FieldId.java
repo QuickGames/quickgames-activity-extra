@@ -1,4 +1,6 @@
-package quickgames.activity.extra.annotation;
+package quickgames.extra.annotation;
+
+import android.support.annotation.IdRes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,15 +9,11 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface FieldPreference {
+public @interface FieldId {
 
     /**
-     * The name of the preference to retrieve.
+     * ID for view.
      */
-    String key();
-
-    FieldType fieldType();
-
-    boolean saveValue() default false;
+    @IdRes int value();
 
 }
