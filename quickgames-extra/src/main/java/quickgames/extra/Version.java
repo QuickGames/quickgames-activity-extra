@@ -10,9 +10,9 @@ public final class Version {
     }
 
     static {
-        Version.s_version = "0.0.2";
-        Version.s_build = 2;
-        Version.s_date = "30.04.2018";
+        Version.s_version = "0.0.3";
+        Version.s_build = 3;
+        Version.s_date = "02.05.2018";
     }
 
     //endregion

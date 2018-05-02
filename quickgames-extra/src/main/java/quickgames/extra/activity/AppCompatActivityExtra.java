@@ -7,6 +7,7 @@ import android.support.annotation.MainThread;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Checkable;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import quickgames.extra.annotation.FieldType;
 import quickgames.extra.view.SetGetValue;
 
 public class AppCompatActivityExtra extends AppCompatActivity {
+    private static final String LOG_TAG = AppCompatActivityExtra.class.getSimpleName();
 
     //region PRIVATE_STATIC_FINAL_VALUES
 
@@ -43,7 +45,7 @@ public class AppCompatActivityExtra extends AppCompatActivity {
 
         // Init views
         mOnCreateFieldId();
-        
+
         super.onCreate(savedInstanceState);
     }
 
@@ -83,7 +85,7 @@ public class AppCompatActivityExtra extends AppCompatActivity {
         // Init views
 
         Class<? extends AppCompatActivityExtra> clazz = getClass();
-        Field[] fields = clazz.getDeclaredFields();
+        Field[] fields = clazz.getFields();
         for (Field field : fields) {
             FieldId annotation = field.getAnnotation(FieldId.class);
             if (annotation != null) {
@@ -96,7 +98,7 @@ public class AppCompatActivityExtra extends AppCompatActivity {
                         // field preferences
                         mFieldPreference(field, view);
                     } catch (IllegalAccessException e) {
-                        e.printStackTrace();
+                        logError(LOG_TAG, e);
                     }
                 }
             }
@@ -215,7 +217,7 @@ public class AppCompatActivityExtra extends AppCompatActivity {
 
                             edit.apply();
                         } catch (IllegalAccessException e) {
-                            e.printStackTrace();
+                            logError(LOG_TAG, e);
                         }
                     }
 
@@ -235,13 +237,11 @@ public class AppCompatActivityExtra extends AppCompatActivity {
             CharSequence text = ((TextView) view).getText();
             String value = text.toString();
             edit.putString(key, value);
-        }
-        else if (view instanceof TextView) {
+        } else if (view instanceof TextView) {
             CharSequence text = ((TextView) view).getText();
             String value = text.toString();
             edit.putString(key, value);
-        }
-        else
+        } else
             result = false;
 
         return result;
@@ -276,6 +276,15 @@ public class AppCompatActivityExtra extends AppCompatActivity {
     @MainThread
     protected <T> T getViewValue(View view) {
         return null;
+    }
+
+    //endregion
+
+    //region STATIC_PROTECTED_METHODS
+
+    protected static void logError(String tag, Throwable e) {
+        String errorMessage = e.getMessage();
+        Log.e(tag, errorMessage);
     }
 
     //endregion
