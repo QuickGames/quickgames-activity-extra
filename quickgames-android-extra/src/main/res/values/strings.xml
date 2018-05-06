@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">quickgames-extra</string>
+    <string name="err_resource_id_not_found" translatable="false">Resource ID not found</string>
+</resources>
